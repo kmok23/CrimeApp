@@ -1,7 +1,25 @@
-if (!exists(".inflation")) {
-  .inflation <- getSymbols('CPIAUCNS', src = 'FRED', 
-     auto.assign = FALSE)
-}  
+# Load raw data
+trainraw <- read.csv("Data/train.csv")
+
+# Count daily frequency of each crime
+freqByCat <- count(trainraw, c("Dates", "Category"))
+
+plotCrime <- function(category) {
+    # Create data frame with only data from Category of ARSON
+    dataByCat <- freqByCat[freqByCat$Category == category, c(1, 3)]
+    # Extract month and year into new variables
+    dataByCat$Month <- as.Date(cut(dataByCat$Dates, breaks = "month"))
+    dataByCat$Year <- as.Date(cut(dataByCat$Dates, breaks = "year"))
+    
+    plotByCategory <- ggplot(data = dataByCat, aes(Month, freq))
+    plotByCategory <- plotByCategory +
+        stat_summary(fun.y = sum,  # adds up all observations for the month
+                     geom = "line")
+    plotByCategory <- plotByCategory +
+        scale_x_date(labels = date_format("%m/%Y"))  # custom x-axis labels
+    plotByCategory <- plotByCategory + ggtitle("Arson by Month")
+    return(plotByCategory)
+}
 
 # adjusts yahoo finance data with the monthly consumer price index 
 # values provided by the Federal Reserve of St. Louis
