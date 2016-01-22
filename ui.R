@@ -9,25 +9,21 @@ shinyUI(fluidPage(
         sidebarPanel(
             helpText("Select a crime to examine."),
 
-            selectInput("crime", label = h3("Crime category"),
-                         choices = sort(as.character(unique(trainraw$Category))))
-#                         selected = 1),
+            selectInput("crime", label = "Crime category",
+                        choices = levels(trainraw$Category)),
             
-#            textInput("symb", "Symbol", "SPY"),
-            
+            radioButtons("time", label = "View by",
+                         choices = list("Month", "Year"))
+          
 #            dateRangeInput("dates", "Date range", start = "2013-01-01", 
 #                           end = as.character(Sys.Date())),
 #            verbatimTextOutput("choice")
-            
-      #checkboxInput("log", "Plot y axis on log scale", 
-#        value = FALSE),
 #      
 #      checkboxInput("adjust", 
 #        "Adjust prices for inflation", value = FALSE)
     ),
     
     mainPanel(
-        verbatimTextOutput("crime"),
         plotOutput("plot")
     )
   )
