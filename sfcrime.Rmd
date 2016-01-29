@@ -54,10 +54,11 @@ dataByArson$Year <- as.Date(cut(dataByArson$Dates, breaks = "year"))
 plotByMonth <- ggplot(data = dataByArson, aes(Month, freq))
 plotByMonth <- plotByMonth +
     stat_summary(fun.y = sum,  # adds up all observations for the month
-    geom = "line")
-plotByMonth <- plotByMonth +
-    scale_x_date(labels = date_format("%m/%Y"))  # custom x-axis labels
-plotByMonth <- plotByMonth + ggtitle("Arson by Month")
+                 geom = "line") +
+    scale_x_date(labels = date_format("%m/%Y")) +  # custom x-axis labels
+    ggtitle("Arson by Month") +
+    labs(x = "Time", y = "Occurences per Month") +
+    theme_bw()
 print(plotByMonth)
 
 # Plot by year

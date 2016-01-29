@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SF Crime History App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="SF Crime History App">
+  <meta name="author" content="Kent Mok">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>SF Crime History App</h1>
+    <h2></h2>
+    <p>Kent Mok<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This app explores the history of crime in San Francisco by category. It plots<br>
+the occurrences by week or by year of a chosen crime category. The data is for<br>
+San Francisco crime between January 1, 2003 and January 13, 2016. </p>
+
+<p>The data can be found at:<br>
+<a href="https://data.sfgov.org/Public-Safety/SFPD-Incidents-from-1-January-2003/tmnf-yvry">https://data.sfgov.org/Public-Safety/SFPD-Incidents-from-1-January-2003/tmnf-yvry</a></p>
+
+<p>The project can be found at:<br>
+<a href="https://kmok23.shinyapps.io/CrimeApp/">https://kmok23.shinyapps.io/CrimeApp/</a></p>
+
+<p>The project Github repository can be found at:<br>
+<a href="https://github.com/kmok23/CrimeApp">https://github.com/kmok23/CrimeApp</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Features</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The app loads the data and then displays the user controls as well as the
+plot for the default crime category.</p>
+
+<ul>
+<li>Plot frequency of a type of crime over time</li>
+<li>User can switch the type of crime from a drop down menu</li>
+<li>User can switch the breaks in time between &quot;months&quot; and &quot;years&quot;</li>
+<li>Plot will update automatically</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Sample Plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The plot below is a sample of the plot with Arson as the selected crime<br>
+category and weeks as the time interval.<br>
+<img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Conclusion</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This app provides an easy way to visualize the historical data for a chosen<br>
+crime. Future development of the app could include:</p>
+
+<ul>
+<li>Selection of intermediate time period (i.e. May 2015 - June 2015)</li>
+<li>Data filtered by police precinct or zip code</li>
+<li>Trend lines or other regression analyses</li>
+</ul>
+
+<h2>Thank you</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Features'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Sample Plot'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Conclusion'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
