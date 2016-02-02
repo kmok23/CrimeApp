@@ -5,9 +5,12 @@ date: "January 13, 2016"
 output: html_document
 ---
 
-
+#Load data
 ```{r load_data}
-trainraw <- read.csv("Data/train.csv")
+system.time(trainraw <- read.csv("Data/sfcrime.csv"))
+
+system.time(trainraw <- readRDS("Data/test.RDS"))
+
 
 # Load packages
 Installed <- require("plyr")
@@ -27,6 +30,20 @@ if (!Installed) {
     install.packages("scales")
     library("scales")
 }
+
+Installed <- require("data.table")
+if (!Installed) {
+    install.packages("data.table", repos = "http://cran.rstudio.com")
+    library("data.table")
+}
+
+Installed <- require("bit64")
+if (!Installed) {
+    install.packages("bit64", repos = "http://cran.rstudio.com")
+    library("bit64")
+}
+
+system.time(trainraw <- fread("Data/sfcrime.csv", sep = ',', showProgress=F))
 ```
 
 #Exploratory Data Analysis
@@ -39,16 +56,16 @@ unique(trainraw$Category)
 
 #Clean Data
 ```{r}
-# Convert Dates variable from factor to date
-trainraw$Dates <- as.Date(trainraw$Dates)
+# Convert Date variable from factor to date
+trainraw$Date <- as.Date(trainraw$Date, format = "%m/%d/%Y")
 # Count daily frequency of each crime
-freqByCategory <- count(trainraw, c("Dates", "Category"))
+freqByCategory <- count(trainraw, c("Date", "Category"))
 
 # Create data frame with only data from Category of ARSON
 dataByArson <- freqByCategory[freqByCategory$Category == "ARSON", c(1, 3)]
 # Extract month and year into new variables
-dataByArson$Month <- as.Date(cut(dataByArson$Dates, breaks = "month"))
-dataByArson$Year <- as.Date(cut(dataByArson$Dates, breaks = "year"))
+dataByArson$Month <- as.Date(cut(dataByArson$Date, breaks = "month"))
+dataByArson$Year <- as.Date(cut(dataByArson$Date, breaks = "year"))
 
 # Plot by month
 plotByMonth <- ggplot(data = dataByArson, aes(Month, freq))

@@ -19,7 +19,8 @@ if (!Installed) {
 }
 
 # Load raw data
-trainraw <- read.csv("Data/sfcrime.csv")
+#trainraw <- read.csv("Data/sfcrime.csv")
+trainraw <- readRDS("Data/test.RDS")
 # Convert categories to lower case except for first letter
 levels(trainraw$Category) <- paste(
     substring(levels(trainraw$Category), 1, 1),

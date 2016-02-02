@@ -1,8 +1,8 @@
 name: CrimeApp
 account: kmok23
 server: shinyapps.io
-bundleId: 360205
+bundleId: 363979
 url: https://kmok23.shinyapps.io/CrimeApp/
-when: 1453939543.71806
+when: 1454374135.6764
 asMultiple: FALSE
 asStatic: FALSE
